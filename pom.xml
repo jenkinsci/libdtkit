@@ -4,15 +4,15 @@
     <parent>
         <groupId>org.jenkins-ci</groupId>
         <artifactId>jenkins</artifactId>
-        <version>1.34</version>
+        <version>1.51</version>
     </parent>
 
     <groupId>org.jenkins-ci.lib.dtkit</groupId>
-    <artifactId>libdtkit-parent</artifactId>
+    <artifactId>dtkit-frmk</artifactId>
     <version>2.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Lib DTKit</name>
+    <name>DTKit Framework</name>
     <url>http://wiki.jenkins-ci.org/display/JENKINS/DTKit</url>
 
     <licenses>
@@ -32,25 +32,13 @@
                 <role>Project developer</role>
             </roles>
         </developer>
+        <developer>
+            <id>nfalco79</id>
+            <name>Nikolas Falco</name>
+            <email>nfalco79@hotmail.com</email>
+            <timezone>+1</timezone>
+        </developer>
     </developers>
-
-    <modules>
-        <module>dtkit-frmk</module>
-    </modules>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
-        <jenkins.version>1.410</jenkins.version>
-        <jackson.version>1.6.0</jackson.version>
-        <jaxb.api.version>2.2.1</jaxb.api.version>
-        <jaxb.impl.version>2.2.1.1</jaxb.impl.version>
-        <jaxb2.maven.plugin.version>1.3</jaxb2.maven.plugin.version>
-        <saxon.version>9.1.0.8</saxon.version>
-        <xmlunit.version>1.3</xmlunit.version>
-        <junit.version>4.8.2</junit.version>
-    </properties>
 
     <scm>
         <connection>scm:git:ssh://github.com/jenkinsci/libdtkit.git</connection>
@@ -59,4 +47,33 @@
         <tag>HEAD</tag>
     </scm>
 
+    <repositories>
+        <repository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.level>8</java.level>
+
+        <!-- dependencies version -->
+        <jenkins.version>2.138.4</jenkins.version>
+        <saxon.version>9.9.1-2</saxon.version>
+        <xmlunit.version>2.6.2</xmlunit.version>
+    </properties>
+
+    <modules>
+        <module>dtkit-metrics-model</module>
+        <module>dtkit-metrics-hudson-api</module>
+        <module>dtkit-metrics-util</module>
+    </modules>
 </project>

@@ -1,0 +1,5 @@
+<FindBugsFilter>
+    <Match>
+        <Class name="org.jenkinsci.lib.dtkit.model.InputMetricXSL" />
+    </Match>
+</FindBugsFilter>
