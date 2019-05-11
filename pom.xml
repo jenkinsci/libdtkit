@@ -77,4 +77,27 @@
         <module>dtkit-metrics-hudson-api</module>
         <module>dtkit-metrics-util</module>
     </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <configLocation>${maven.multiModuleProjectDirectory}/checkstyle.xml</configLocation>
+                    <sourceDirectories>${project.build.sourceDirectory}</sourceDirectories>
+                    <testSourceDirectories>${project.build.testSourceDirectory}</testSourceDirectories>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <resourceIncludes>**/*.properties,**/*.jelly</resourceIncludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
