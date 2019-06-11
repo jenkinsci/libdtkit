@@ -282,14 +282,6 @@ public abstract class InputMetricXSL extends InputMetric {
         return getOutputValidationErrors().size() == 0;
     }
 
-
-    /**
-     * --------------------------------------------------------
-     * <p/>
-     * HASHCODE() AND EQUALS() for comparaison
-     * <p/>
-     * --------------------------------------------------------
-     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

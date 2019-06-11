@@ -64,7 +64,7 @@ public abstract class InputMetric implements Serializable {
     private List<ValidationError> outputValidationErrors = new ArrayList<ValidationError>();
 
     /**
-     * The name of the current tool
+     * The name of the current tool.
      *
      * @return the tool name
      */
@@ -74,7 +74,7 @@ public abstract class InputMetric implements Serializable {
     }
 
     /**
-     * The version of the current tool
+     * The version of the current tool.
      *
      * @return the tool version
      */
@@ -89,7 +89,7 @@ public abstract class InputMetric implements Serializable {
     }
 
     /**
-     * The label of the tool
+     * The label of the tool.
      *
      * @return the label metric
      */
@@ -109,7 +109,7 @@ public abstract class InputMetric implements Serializable {
     }
 
     /**
-     * Gives the input metric type (XSL or Other) according the subclass type
+     * Gives the input metric type (XSL or Other) according the subclass type.
      *
      * @return the input metric type
      */
@@ -119,7 +119,7 @@ public abstract class InputMetric implements Serializable {
     }
 
     /**
-     * Gives the metric tool type (TEST, COVERAGE, MEASURE, VIOLATION)
+     * Gives the metric tool type (TEST, COVERAGE, MEASURE, VIOLATION).
      *
      * @return the input object
      */
@@ -129,7 +129,7 @@ public abstract class InputMetric implements Serializable {
     }
 
     /**
-     * Gives the output format type (given by the format model)
+     * Gives the output format type (given by the format model).
      *
      * @return the Output format type (usually retrieved by the format model
      *         library as junit-model.jar or tusar-model.jar)
@@ -142,7 +142,7 @@ public abstract class InputMetric implements Serializable {
     /**
      * Convert an input file to an output file Give your conversion process
      * Input and Output files are relatives to the filesystem where the process
-     * is executed on (like Hudson agent)
+     * is executed on (like Hudson agent).
      *
      * @param inputFile
      *            the input file to convert
@@ -160,7 +160,7 @@ public abstract class InputMetric implements Serializable {
     /**
      * Convert an input file to an output file Give your conversion process
      * Input and Output files are relatives to the filesystem where the process
-     * is executed on (like Hudson agent)
+     * is executed on (like Hudson agent).
      *
      * @param inputFile
      *            the input file to convert
@@ -175,24 +175,26 @@ public abstract class InputMetric implements Serializable {
      */
     public abstract void convert(File inputFile, File outFile, Map<String, Object> params) throws ConversionException;
 
-    /*
-     * Gives the validation process for the input file
+    /**
+     * Gives the validation process for the input file.
+     * 
+     * @param inputXMLFile to validate
      *
      * @return true if the input file is valid, false otherwise
      */
-
     public abstract boolean validateInputFile(File inputXMLFile) throws ValidationException;
 
-    /*
-     * Gives the validation process for the output file
+    /**
+     * Gives the validation process for the output file.
+     * 
+     * @param inputXMLFile to validate
      *
      * @return true if the input file is valid, false otherwise
      */
-
     public abstract boolean validateOutputFile(File inputXMLFile) throws ValidationException;
 
     /**
-     * Gets all input validation errors
+     * Gets all input validation errors.
      *
      * @return the list of all input validation errors
      */
