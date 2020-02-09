@@ -35,9 +35,15 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.io.StringReader;
 import java.util.Map;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
+
+import org.xml.sax.EntityResolver;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
 import net.sf.saxon.lib.Feature;
 import net.sf.saxon.s9api.Processor;
 import net.sf.saxon.s9api.SaxonApiException;
@@ -45,9 +51,6 @@ import net.sf.saxon.s9api.Serializer;
 import net.sf.saxon.s9api.Xslt30Transformer;
 import net.sf.saxon.s9api.XsltCompiler;
 import net.sf.saxon.s9api.XsltExecutable;
-import org.xml.sax.EntityResolver;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
 @SuppressWarnings("serial")
 public class ConversionService implements Serializable {
@@ -250,6 +253,8 @@ public class ConversionService implements Serializable {
         processor.setConfigurationProperty(Feature.ENTITY_RESOLVER_CLASS, DTKitEntityresolver.class.getName());
         processor.setConfigurationProperty(Feature.DTD_VALIDATION, false);
         processor.setConfigurationProperty(Feature.DTD_VALIDATION_RECOVERABLE, true);
+        // remove DTD validation warning messages on system error
+        processor.getUnderlyingConfiguration().setValidation(false);
         XsltCompiler compiler = processor.newXsltCompiler();
 
         // compile and load the XSL file
