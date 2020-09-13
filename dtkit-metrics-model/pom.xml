@@ -18,17 +18,7 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>findbugs-maven-plugin</artifactId>
-                    <configuration>
-                        <excludeFilterFile>findbugs-exclude.xml</excludeFilterFile>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+    <properties>
+        <findbugs.excludeFilterFile>findbugs-exclude.xml</findbugs.excludeFilterFile>
+    </properties>
 </project>

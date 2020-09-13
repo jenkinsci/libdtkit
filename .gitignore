@@ -3,5 +3,4 @@ target/
 .project
 .classpath
 .DS_Store
-*.releaseBackup
-/release.properties
+
