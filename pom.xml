@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci</groupId>
         <artifactId>jenkins</artifactId>
-        <version>1.51</version>
+        <version>1.56</version>
     </parent>
 
     <groupId>org.jenkins-ci.lib.dtkit</groupId>
@@ -67,8 +67,8 @@
         <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
 
         <!-- dependencies version -->
-        <jenkins.version>2.138.4</jenkins.version>
-        <saxon.version>9.9.1-6</saxon.version>
+        <jenkins.version>2.204.6</jenkins.version>
+        <saxon.version>10.2</saxon.version>
         <xmlunit.version>2.6.2</xmlunit.version>
     </properties>
 
