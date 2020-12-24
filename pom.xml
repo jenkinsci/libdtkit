@@ -9,7 +9,7 @@
 
     <groupId>org.jenkins-ci.lib.dtkit</groupId>
     <artifactId>dtkit-frmk</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>DTKit Framework</name>
@@ -44,7 +44,7 @@
         <connection>scm:git:ssh://github.com/jenkinsci/libdtkit.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/libdtkit.git</developerConnection>
         <url>https://github.com/jenkinsci/libdtkit</url>
-        <tag>dtkit-frmk-3.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <repositories>
