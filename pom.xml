@@ -68,7 +68,7 @@
 
         <!-- dependencies version -->
         <jenkins.version>2.204.6</jenkins.version>
-        <saxon.version>10.2</saxon.version>
+        <saxon.version>10.3</saxon.version>
         <xmlunit.version>2.6.2</xmlunit.version>
     </properties>
 
