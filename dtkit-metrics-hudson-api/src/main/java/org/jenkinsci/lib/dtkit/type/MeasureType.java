@@ -36,14 +36,6 @@ public abstract class MeasureType extends MetricsType implements Describable<Mea
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    protected MeasureType(String pattern, boolean failIfNotNew, boolean deleteOutputFiles, boolean stopProcessingIfError) {
-        super(pattern, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
-    }
-
-    protected MeasureType(String pattern, boolean failIfNotNew, boolean deleteOutputFiles) {
-        super(pattern, failIfNotNew, deleteOutputFiles);
-    }
-
     protected MeasureType(String pattern) {
         super(pattern);
     }

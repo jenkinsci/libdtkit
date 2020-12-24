@@ -36,14 +36,6 @@ public abstract class TestType extends MetricsType implements Describable<TestTy
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    protected TestType(String pattern, boolean failIfNotNew, boolean deleteOutputFiles, boolean stopProcessingIfError) {
-        super(pattern, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
-    }
-
-    protected TestType(String pattern, boolean failIfNotNew, boolean deleteOutputFiles) {
-        super(pattern, failIfNotNew, deleteOutputFiles);
-    }
-
     protected TestType(String pattern) {
         super(pattern);
     }

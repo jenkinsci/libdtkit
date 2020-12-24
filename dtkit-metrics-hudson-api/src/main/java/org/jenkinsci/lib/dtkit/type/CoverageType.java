@@ -37,14 +37,6 @@ public abstract class CoverageType extends MetricsType implements Describable<Co
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    protected CoverageType(String pattern, boolean failIfNotNew, boolean deleteOutputFiles, boolean stopProcessingIfError) {
-        super(pattern, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
-    }
-
-    protected CoverageType(String pattern, boolean failIfNotNew, boolean deleteOutputFiles) {
-        super(pattern, failIfNotNew, deleteOutputFiles);
-    }
-
     protected CoverageType(String pattern) {
         super(pattern);
     }

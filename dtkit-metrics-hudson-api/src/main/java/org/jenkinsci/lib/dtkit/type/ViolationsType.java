@@ -37,14 +37,6 @@ public abstract class ViolationsType extends MetricsType implements Describable<
         super(pattern, skipNoTestFiles, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
     }
 
-    protected ViolationsType(String pattern, boolean failIfNotNew, boolean deleteOutputFiles, boolean stopProcessingIfError) {
-        super(pattern, failIfNotNew, deleteOutputFiles, stopProcessingIfError);
-    }
-
-    protected ViolationsType(String pattern, boolean failIfNotNew, boolean deleteOutputFiles) {
-        super(pattern, failIfNotNew, deleteOutputFiles);
-    }
-
     protected ViolationsType(String pattern) {
         super(pattern);
     }

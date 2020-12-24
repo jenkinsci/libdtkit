@@ -23,28 +23,28 @@
  */
 package org.jenkinsci.lib.dtkit.type;
 
-import hudson.ExtensionPoint;
-import org.jenkinsci.lib.dtkit.model.InputMetric;
-
 import java.io.Serializable;
 
+import org.jenkinsci.lib.dtkit.model.InputMetric;
+
+import hudson.ExtensionPoint;
 
 @SuppressWarnings("serial")
 public abstract class MetricsType implements ExtensionPoint, Serializable {
 
     private final String pattern;
-
+    private String excludesPattern;
+    private boolean skipNoTestFiles;
     private transient Boolean faildedIfNotNew;
+    private boolean failIfNotNew = true;
+    private boolean deleteOutputFiles = true;
+    private boolean stopProcessingIfError;
 
-    private Boolean skipNoTestFiles;
-
-    private Boolean failIfNotNew;
-
-    private Boolean deleteOutputFiles;
-
-    private Boolean stopProcessingIfError;
-
-    protected MetricsType(String pattern, Boolean skipNoTestFiles, Boolean failIfNotNew, Boolean deleteOutputFiles, Boolean stopProcessingIfError) {
+    protected MetricsType(String pattern,
+                          boolean skipNoTestFiles,
+                          boolean failIfNotNew,
+                          boolean deleteOutputFiles,
+                          boolean stopProcessingIfError) {
         this.pattern = pattern;
         this.skipNoTestFiles = skipNoTestFiles;
         this.failIfNotNew = failIfNotNew;
@@ -52,68 +52,67 @@ public abstract class MetricsType implements ExtensionPoint, Serializable {
         this.stopProcessingIfError = stopProcessingIfError;
     }
 
-    protected MetricsType(String pattern, Boolean failIfNotNew, Boolean deleteOutputFiles, Boolean stopProcessingIfError) {
-        this.pattern = pattern;
-        this.failIfNotNew = failIfNotNew;
-        this.deleteOutputFiles = deleteOutputFiles;
-        this.stopProcessingIfError = stopProcessingIfError;
-    }
-
-    protected MetricsType(String pattern, boolean failIfNotNew, boolean deleteOutputFiles) {
-        this.pattern = pattern;
-        this.failIfNotNew = failIfNotNew;
-        this.deleteOutputFiles = deleteOutputFiles;
-        this.stopProcessingIfError = true;
-    }
-
     protected MetricsType(String pattern) {
         this.pattern = pattern;
-        this.failIfNotNew = false;
-        this.deleteOutputFiles = false;
-        this.stopProcessingIfError = true;
     }
 
     public String getPattern() {
         return pattern;
     }
 
+    public String getExcludesPattern() {
+        return excludesPattern;
+    }
+
+    public void setExcludesPattern(String excludesPattern) {
+        this.excludesPattern = excludesPattern;
+    }
+
     public boolean isSkipNoTestFiles() {
-        return (skipNoTestFiles == null) ? false : skipNoTestFiles.booleanValue();
+        return skipNoTestFiles;
+    }
+
+    public void setSkipNoTestFiles(boolean skipNoTestFiles) {
+        this.skipNoTestFiles = skipNoTestFiles;
     }
 
     public boolean isFailIfNotNew() {
-        return (failIfNotNew == null ? true : failIfNotNew.booleanValue());
+        return failIfNotNew;
+    }
+
+    public void setFailIfNotNew(boolean failIfNotNew) {
+        this.failIfNotNew = failIfNotNew;
     }
 
     @Deprecated
     public boolean isFaildedIfNotNew() {
-        return (faildedIfNotNew == null ? true : faildedIfNotNew);
+        return (faildedIfNotNew == null ? failIfNotNew : faildedIfNotNew.booleanValue());
     }
 
     public boolean isDeleteOutputFiles() {
-        return (deleteOutputFiles == null ? true : deleteOutputFiles);
+        return deleteOutputFiles;
+    }
+
+    public void setDeleteOutputFiles(boolean deleteOutputFiles) {
+        this.deleteOutputFiles = deleteOutputFiles;
     }
 
     public boolean isStopProcessingIfError() {
         return stopProcessingIfError;
     }
 
+    public void setStopProcessingIfError(boolean stopProcessingIfError) {
+        this.stopProcessingIfError = stopProcessingIfError;
+    }
+
     public abstract InputMetric getInputMetric();
 
-    public Object readResolve() {
-        if (stopProcessingIfError == null) {
-            stopProcessingIfError = true;
-        }
-
-        if (failIfNotNew == null) {
-            failIfNotNew = (faildedIfNotNew == null) ? Boolean.FALSE : faildedIfNotNew;
-        }
-
-        if (skipNoTestFiles == null) {
-            skipNoTestFiles = false;
+    protected Object readResolve() {
+        if (faildedIfNotNew != null) {
+            failIfNotNew = faildedIfNotNew.booleanValue();
         }
 
         return this;
     }
-}
 
+}
